@@ -54,8 +54,11 @@ func (api *Api) addAuth(req *http.Request) {
 // ------------------------------------------------------------------------- //
 
 // GET function to request an API
-func (api *Api) GET(endpoint string) (string, error) {
-    return api.genericRequest("GET", endpoint, nil)
+func (api *Api) GET(endpoint string, *data interface{}) (string, error) {
+	if data == nil {
+        return api.genericRequest("GET", endpoint, nil)
+    }
+    return api.genericRequest("GET", endpoint, *data)
 }
 
 // POST function to request an API
