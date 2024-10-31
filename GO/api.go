@@ -20,24 +20,21 @@ func NewApi(baseApi string) *Api {
 /* AUTHENTIFICATION */
 // ------------------------------------------------------------------------- //
 
-func (api *Api) AddApiKey(apiKey string) *Api {
+func (api *Api) AddApiKey(apiKey string) {
     api.apiKey = apiKey
-    return api
 }
 
 // ------------------------------------------------------------------------- //
 
-func (api *Api) AddBearerToken(token string) *Api {
+func (api *Api) AddBearerToken(token string) {
     api.bearerToken = token
-    return api
 }
 
 // ------------------------------------------------------------------------- //
 
-func (api *Api) AddBasicAuth(username, password string) *Api {
+func (api *Api) AddBasicAuth(username, password string) {
     api.username = username
     api.password = password
-    return api
 }
 
 // ------------------------------------------------------------------------- //
