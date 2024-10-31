@@ -1,3 +1,5 @@
+package requestapigo
+
 // Api struct
 type Api struct {
     baseApi string
