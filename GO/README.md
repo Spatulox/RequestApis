@@ -1,7 +1,25 @@
 ## Presentation
 This package is named `requestapigo`
+All request methods expect an interface. Ensure that the provided interface matches the API's expected format.
+
+```go
+// POST function expect an interface
+func (api *Api) POST(endpoint string, data interface{}) (string, error) {
+    return api.genericRequest("POST", endpoint, data)
+}
+```
+
+You can use a map[string]interface{} (like a JSON object in GO) of a structure
+
 
 ## Example
+
+```go
+type Login struct {
+    Email  string `json:"name"`             // the "json tag" is for the apipart (make sure it match the dataname expected by the api)
+    Password string `json:"email"`          // the "json tag" is for the apipart (make sure it match the dataname expected by the api)
+}
+```
 
 ### How to instanciate a new API connexion
 ```go
@@ -24,6 +42,12 @@ func main() {
     data := map[string]interface{}{
         "email": "john.doe@example.com",
         "password": "AZERTY",
+    }
+
+    // You can use a struct too.
+    data := Login{
+        Email: "john@example.com",
+        Name:  "John Doe",
     }
 
     // ------ With apiKey ------
@@ -61,6 +85,12 @@ func main() {
     data := map[string]interface{}{
         "email": "john.doe@example.com",
         "password": "qwerty123",
+    }
+
+    data := User{
+        Name:  "John Doe",
+        Email: "john@example.com",
+        Age:   30,
     }
 
     api := NewApi("https://api.example.com")
