@@ -9,17 +9,18 @@ func (api *Api) POST(endpoint string, data interface{}) (string, error) {
 }
 ```
 
-You can use a map[string]interface{} (like a JSON object in GO) of a structure
+You can use a `map[string]interface{}` (like a JSON object in GO) or a structure with json tag
 
-
-## Example
-
+Structure with json tag :
 ```go
 type Login struct {
     Email  string `json:"name"`             // the "json tag" is for the apipart (make sure it match the dataname expected by the api)
     Password string `json:"email"`          // the "json tag" is for the apipart (make sure it match the dataname expected by the api)
 }
 ```
+
+
+## Example
 
 ### How to instanciate a new API connexion
 ```go
